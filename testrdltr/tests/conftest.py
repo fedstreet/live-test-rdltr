@@ -1,6 +1,8 @@
 from pytest import fixture
 from requests import post
 
+from testrdltr.setup import pageserver
+
 
 @fixture(scope="session")
 def auth_token():
@@ -10,3 +12,10 @@ def auth_token():
     token = login_response.json()["auth_token"]
     print(f"Received Auth token: {token}")
     return f"Bearer {token}"
+
+
+@fixture(scope="session", autouse=True)
+def stub_server():
+    pageserver.start_server()
+    yield
+    pageserver.stop_server()
