@@ -1,6 +1,5 @@
-from requests import get, post
-
 from testrdltr.setup import pageserver
+from testrdltr.apiclient.loggingproxy import get, post
 
 
 def test_articles_return_page_1(auth_token):

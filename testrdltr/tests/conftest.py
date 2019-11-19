@@ -1,7 +1,7 @@
 from pytest import fixture
-from requests import post
 
 from testrdltr.setup import pageserver
+from testrdltr.apiclient.loggingproxy import post
 
 
 @fixture(scope="session")
