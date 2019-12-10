@@ -7,6 +7,9 @@ from testrdltr.apiclient.loggingproxy import get, post, delete
 from testrdltr.config import testconfig
 
 
+import allure
+
+
 class ArticlesGet(AuthenticatedRequest):
     def __init__(self):
         super().__init__()
@@ -39,6 +42,7 @@ class ArticlesPost(AuthenticatedRequest):
         self.data["tags"] = tags
         return self
 
+    @allure.step
     def create_article(self) -> ArticlesPostResponse:
         response = post(self.api_url, headers=self.headers, json=self.data)
         return ArticlesPostResponse(response)
@@ -49,11 +53,13 @@ class ArticlesDelete(AuthenticatedRequest):
         super().__init__()
         self.api_url_format = testconfig.get_base_api_url() + "/articles/{}"
 
+    @allure.step
     def delete(self, article_id: int) -> Response:
         response = delete(self.api_url_format.format(article_id), headers=self.headers)
         assert response.status_code == 204, "Article #{} deleted successfully".format(article_id)
         return response
 
+    @allure.step
     def delete_all(self, article_ids: List[int]):
         for article_id in article_ids:
             self.delete(article_id)

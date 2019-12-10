@@ -3,15 +3,20 @@ import requests
 from rapidtables import print_table
 from typing import Dict
 
+import allure
 
+
+@allure.step("HTTP GET")
 def get(*args, **kwargs) -> requests.Response:
     return request_with_logging(requests.get, False, *args, **kwargs)
 
 
+@allure.step("HTTP POST")
 def post(*args, **kwargs) -> requests.Response:
     return request_with_logging(requests.post, True, *args, **kwargs)
 
 
+@allure.step("HTTP DELETE")
 def delete(*args, **kwargs) -> requests.Response:
     return request_with_logging(requests.delete, False, *args, **kwargs)
 
