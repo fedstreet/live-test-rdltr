@@ -63,7 +63,7 @@ The other is loading an example project from GitHub. Below are the steps for the
 1. Clone the fork of the **live-test-rdltr** repository. (It is this repository. If you already cloned it,
    you don't need to do it twice.)
 
-     > git clone https://github.com/olleont52/live-test-rdltr
+       git clone https://github.com/olleont52/live-test-rdltr
 
 2. Create a virtual environment for the testing project. For instance, if you open it in PyCharm,
    the IDE will offer you to create a new environment.
