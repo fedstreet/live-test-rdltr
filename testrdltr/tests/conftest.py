@@ -10,7 +10,7 @@ from testrdltr.apiclient.methods.articles import ArticlesGet, ArticlesDelete
 def auth_token():
     response = AuthLoginPost().request_login(
         testconfig.get_user_email(),
-        testconfig.get_user_pasword())
+        testconfig.get_user_password())
     response.assert_is_ok()
     token = response.get_auth_token()
     print(f"Received Auth token: {token}")

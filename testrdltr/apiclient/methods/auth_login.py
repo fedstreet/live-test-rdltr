@@ -5,6 +5,7 @@ from testrdltr.apiclient.loggingproxy import post
 
 import allure
 
+
 class AuthLoginResponse:
     def __init__(self, response: Response):
         assert isinstance(response, Response), "Should be initialized with a Response object"
@@ -23,5 +24,5 @@ class AuthLoginPost:
 
     @allure.step
     def request_login(self, email: str, password: str) -> AuthLoginResponse:
-        login_response = post(self.api_url, json={"email": "a@a.a", "password": "userpass"})
+        login_response = post(self.api_url, json={"email": email, "password": password})
         return AuthLoginResponse(login_response)

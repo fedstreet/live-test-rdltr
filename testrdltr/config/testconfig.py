@@ -10,5 +10,5 @@ def get_user_email():
     return DEFAULT_USER_EMAIL
 
 
-def get_user_pasword():
+def get_user_password():
     return DEFAULT_USER_PASSWORD
